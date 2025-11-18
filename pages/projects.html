@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Проекты</title>
+    <link rel="stylesheet" href="../styles/styles.css">
+</head>
+
+<body>
+    <div class="page">
+        <header class="header">
+            <img class="header__logo" src="../images/icons/photo.jpg" alt="Логотип">
+            <h1 class="header__text">Фамилия Георгий Батькович</h1>
+        </header>
+        <nav class="nav">
+            <ul class="nav__list">
+                <li class="nav__item"><a class="nav__link" href="../index.html">Главная</a></li>
+                <li class="nav__item"><a class="nav__link nav__link--active" href="projects.html">Проекты</a></li>
+                <li class="nav__item"><a class="nav__link" href="diary.html">Дневник</a></li>
+                <li class="nav__item"><a class="nav__link" href="contacts.html">Контакты</a></li>
+            </ul>
+        </nav>
+        <main>
+            <section class="section">
+                <div class="projects-header">
+                    <h2 class="section__title" style="margin-bottom: 0;">Мои проекты</h2>
+                    <div class="filters-minimal">
+                        <button class="filter-btn active" data-filter="all">Все</button>
+                        <button class="filter-btn" data-filter="c++">C++</button>
+                        <button class="filter-btn" data-filter="js">JS</button>
+                        <button class="filter-btn" data-filter="java">Java</button>
+                    </div>
+                </div>
+
+                <div class="projects-grid">
+                    <article class="project" onclick="openModal('modal1')" data-tech="java">
+                        <div class="project__image">
+                            <img src="../images/icons/mob.jpeg" alt="Мобильное приложение">
+                        </div>
+                        <h3 class="project__title">Мобильное приложение</h3>
+                        <p class="project__description">Подготовка к ЕГЭ по математике</p>
+                        <div class="project__click-hint">Нажмите для подробностей</div>
+                    </article>
+                    <article class="project" onclick="openModal('modal2')" data-tech="js">
+                        <div class="project__image">
+                            <img src="../images/icons/uniqe.png" alt="Сайт Unique">
+                        </div>
+                        <h3 class="project__title">Сайт Unique</h3>
+                        <p class="project__description">Киберспортивная организация</p>
+                        <div class="project__click-hint">Нажмите для подробностей</div>
+                    </article>
+                    <article class="project" onclick="openModal('modal3')" data-tech="js">
+                        <div class="project__image">
+                            <img src="../images/icons/lichka.jpeg" alt="Моя страничка">
+                        </div>
+                        <h3 class="project__title">Моя страничка</h3>
+                        <p class="project__description">Личный сайт-портфолио</p>
+                        <div class="project__click-hint">Нажмите для подробностей</div>
+                    </article>
+                    <article class="project" onclick="openModal('modal4')" data-tech="c++">
+                        <h3 class="project__title">Password Manager</h3>
+                        <p class="project__description">Менеджер паролей на C++/Qt</p>
+                        <div class="project__click-hint">Нажмите для подробностей</div>
+                    </article>
+                </div>
+            </section>
+        </main>
+        <footer class="footer">
+            <p>© 2025 Все права защищены.</p>
+        </footer>
+    </div>
+
+    <!-- Модальные окна для проектов -->
+    <div id="modal1" class="modal">
+        <div class="modal__content">
+            <button class="modal__close" onclick="closeModal('modal1')">&times;</button>
+            <div class="modal__header">
+                <h3 class="modal__title">Мобильное приложение</h3>
+            </div>
+            <img class="modal__image" src="../images/icons/mob.jpeg" alt="Мобильное приложение">
+            <div class="modal__body">
+                <p class="modal__description">Полнофункциональное мобильное приложение для подготовки к ЕГЭ по
+                    профильной математике. Включает в себя:</p>
+                <ul class="modal__description-nav">
+                    <li>Более 30 финансовых задач</li>
+                    <li>Подробные решения и объяснения</li>
+                    <li>Систему прогресса и достижений</li>
+                </ul>
+                <p class="modal__description"><strong>Технологии:</strong> Java, Android SDK</p>
+                <div class="modal__links">
+                    <span class="modal__link-disabled">Репозиторий временно недоступен</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal2" class="modal">
+        <div class="modal__content">
+            <button class="modal__close" onclick="closeModal('modal2')">&times;</button>
+            <div class="modal__header">
+                <h3 class="modal__title">Сайт Unique</h3>
+            </div>
+            <img class="modal__image" src="../images/icons/uniqe.png" alt="Сайт Unique">
+            <div class="modal__body">
+                <p class="modal__description">Корпоративный сайт для киберспортивной организации Unique. Основные
+                    функции:</p>
+                <ul class="modal__description-nav">
+                    <li>Расписание турниров и матчей</li>
+                    <li>Профили игроков и команд</li>
+                    <li>Новостная лента организации</li>
+                </ul>
+                <p class="modal__description"><strong>Технологии:</strong> HTML, CSS, JavaScript</p>
+                <div class="modal__links">
+                    <a href="https://github.com/zhorikbla/unique_famq" target="_blank" class="modal__link">GitHub
+                        Репозиторий</a>
+                    <a href="https://zhorikbla.github.io/unique_famq" target="_blank" class="modal__link">Открыть
+                        страницу</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal3" class="modal">
+        <div class="modal__content">
+            <button class="modal__close" onclick="closeModal('modal3')">&times;</button>
+            <div class="modal__header">
+                <h3 class="modal__title">Моя страничка</h3>
+            </div>
+            <img class="modal__image" src="../images/icons/lichka.jpeg" alt="Моя страничка">
+            <div class="modal__body">
+                <p class="modal__description">Персональный веб-сайт портфолио с современным дизайном. Особенности:</p>
+                <ul class="modal__description-nav">
+                    <li>Адаптивный дизайн для всех устройств</li>
+                    <li>Интерактивное портфолио проектов</li>
+                    <li>Система контактов и обратной связи</li>
+                    <li>Интеграция с GitHub</li>
+                </ul>
+                <p class="modal__description"><strong>Технологии:</strong> HTML, CSS, JavaScript</p>
+                <div class="modal__links">
+                    <a href="https://github.com/zhorikbla/pr14" target="_blank" class="modal__link">GitHub
+                        Репозиторий</a>
+                    <a href="https://zhorikbla.github.io/pr14" target="_blank" class="modal__link">Открыть страницу</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal4" class="modal">
+        <div class="modal__content">
+            <button class="modal__close" onclick="closeModal('modal4')">&times;</button>
+            <div class="modal__header">
+                <h3 class="modal__title">Password Manager</h3>
+            </div>
+            <div class="modal__body">
+                <p class="modal__description">Безопасный менеджер паролей с графическим интерфейсом. Основные
+                    возможности:</p>
+                <ul class="modal__description-nav">
+                    <li>Генератор сложных паролей</li>
+                    <li>Категоризация учетных записей</li>
+                    <li>Автоматическое резервное копирование</li>
+                    <li>Кроссплатформенная совместимость</li>
+                </ul>
+                <p class="modal__description"><strong>Технологии:</strong> C++, Qt Framework</p>
+                <div class="modal__links">
+                    <span class="modal__link-disabled">Репозиторий в разработке</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openModal(modalId) {
+            document.getElementById(modalId).style.display = 'block';
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+        }
+        window.onclick = function (event) {
+            const modals = document.querySelectorAll('.modal');
+            modals.forEach(modal => {
+                if (event.target === modal) {
+                    modal.style.display = 'none';
+                }
+            });
+        }
+
+        // Фильтрация проектов
+        document.addEventListener('DOMContentLoaded', function () {
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            const projects = document.querySelectorAll('.project');
+
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', function () {
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+
+                    const filter = this.getAttribute('data-filter');
+
+                    projects.forEach(project => {
+                        const projectTech = project.getAttribute('data-tech');
+
+                        if (filter === 'all' || projectTech === filter) {
+                            project.style.display = 'block';
+                        } else {
+                            project.style.display = 'none';
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

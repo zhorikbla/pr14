@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Главная</title>
+    <link rel="stylesheet" href="styles/styles.css">
+</head>
+
+<body>
+    <div class="page">
+        <header class="header">
+            <img class="header__logo" src="images/icons/photo.jpg" alt="Логотип">
+            <h1 class="header__text">Фамилия Георгий Батькович</h1>
+        </header>
+        <nav class="nav">
+            <ul class="nav__list">
+                <li class="nav__item"><a class="nav__link nav__link--active" href="index.html">Главная</a></li>
+                <li class="nav__item"><a class="nav__link" href="pages/projects.html">Проекты</a></li>
+                <li class="nav__item"><a class="nav__link" href="pages/diary.html">Дневник</a></li>
+                <li class="nav__item"><a class="nav__link" href="pages/contacts.html">Контакты</a></li>
+            </ul>
+        </nav>
+        <section class="profile">
+            <div class="profile__photo-container">
+                <img class="profile__photo" src="images/icons/photo1.jpg" alt="Фото студента">
+            </div>
+            <div class="profile__info">
+                <p class="profile__text">Привет! Я студент группы ЭФБО-05-24. Увлекаюсь веб-разработкой.</p>
+                <button class="btn btn--download" id="downloadBtn">Скачать резюме</button>
+            </div>
+        </section>
+        <section class="section">
+            <h2 class="section__title">Мои навыки</h2>
+            <div class="skills">
+                <div class="skill">
+                    <div class="skill__row">
+                        <span class="skill__name">Flex</span>
+                        <progress class="skill__progress" value="75" max="100"></progress>
+                        <span class="skill__value">75%</span>
+                    </div>
+                </div>
+                <div class="skill">
+                    <div class="skill__row">
+                        <span class="skill__name">C#</span>
+                        <progress class="skill__progress" value="60" max="100"></progress>
+                        <span class="skill__value">60%</span>
+                    </div>
+                </div>
+                <div class="skill">
+                    <div class="skill__row">
+                        <span class="skill__name">Java</span>
+                        <progress class="skill__progress" value="75" max="100"></progress>
+                        <span class="skill__value">75%</span>
+                    </div>
+                </div>
+                <div class="skill">
+                    <div class="skill__row">
+                        <span class="skill__name">JavaScript</span>
+                        <progress class="skill__progress" value="60" max="100"></progress>
+                        <span class="skill__value">60%</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="section">
+            <h2 class="section__title">Лучшие проекты</h2>
+            <div class="projects">
+                <article class="project" onclick="openModal('modal1')">
+                    <h3 class="project__title">Мобильное приложение</h3>
+                    <p class="project__description">Подготовка к ЕГЭ по математике</p>
+                    <div class="project__click-hint">Нажмите для подробностей</div>
+                </article>
+
+                <article class="project" onclick="openModal('modal2')">
+                    <h3 class="project__title">Сайт Unique</h3>
+                    <p class="project__description">Киберспортивная организация</p>
+                    <div class="project__click-hint">Нажмите для подробностей</div>
+                </article>
+
+                <article class="project" onclick="openModal('modal3')">
+                    <h3 class="project__title">Моя страничка</h3>
+                    <p class="project__description">Личный сайт-портфолио</p>
+                    <div class="project__click-hint">Нажмите для подробностей</div>
+                </article>
+        </section>
+        <footer class="footer">
+            <p>© 2025 Все права защищены.</p>
+        </footer>
+    </div>
+
+    <!-- Модальные окна -->
+    <div id="modal1" class="modal">
+        <div class="modal__content">
+            <button class="modal__close" onclick="closeModal('modal1')">&times;</button>
+            <img class="modal__image" src="images/icons/mob.jpeg" alt="Мобильное приложение">
+            <div class="modal__body">
+                <h3 class="modal__title">Мобильное приложение</h3>
+                <p class="modal__description">Полнофункциональное мобильное приложение для подготовки к ЕГЭ по
+                    профильной математике. Включает в себя:</p>
+                <ul class="modal__description-nav">
+                    <li>Более 30 финансовых задач</li>
+                    <li>Подробные решения и объяснения</li>
+                    <li>Систему прогресса и достижений</li>
+                </ul>
+                <p class="modal__description"><strong>Технологии:</strong> Java, Android SDK</p>
+                <a href="pages/projects.html" class="modal__link">Все проекты</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal2" class="modal">
+        <div class="modal__content">
+            <button class="modal__close" onclick="closeModal('modal2')">&times;</button>
+            <img class="modal__image" src="images/icons/uniqe.png" alt="Сайт Unique">
+            <div class="modal__body">
+                <h3 class="modal__title">Сайт Unique</h3>
+                <p class="modal__description">Корпоративный сайт для киберспортивной организации Unique. Основные
+                    функции:</p>
+                <ul class="modal__description-nav">
+                    <li>Расписание турниров и матчей</li>
+                    <li>Профили игроков и команд</li>
+                    <li>Новостная лента организации</li>
+                </ul>
+                <p class="modal__description"><strong>Технологии:</strong> HTML, CSS, JavaScript</p>
+                <a href="pages/projects.html" class="modal__link">Все проекты</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal3" class="modal">
+        <div class="modal__content">
+            <button class="modal__close" onclick="closeModal('modal3')">&times;</button>
+            <img class="modal__image" src="images/icons/lichka.jpeg" alt="Моя страничка">
+            <div class="modal__body">
+                <h3 class="modal__title">Моя страничка</h3>
+                <p class="modal__description">Персональный веб-сайт портфолио с современным дизайном. Особенности:</p>
+                <ul class="modal__description-nav">
+                    <li>Адаптивный дизайн для всех устройств</li>
+                    <li>Интерактивное портфолио проектов</li>
+                    <li>Система контактов и обратной связи</li>
+                    <li>Интеграция с GitHub</li>
+                </ul>
+                <p class="modal__description"><strong>Технологии:</strong> HTML, CSS, JavaScript</p>
+                <a href="pages/projects.html" class="modal__link">Все проекты</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openModal(modalId) {
+            document.getElementById(modalId).style.display = 'block';
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+        }
+        window.onclick = function (event) {
+            const modals = document.querySelectorAll('.modal');
+            modals.forEach(modal => {
+                if (event.target === modal) {
+                    modal.style.display = 'none';
+                }
+            });
+        }
+
+        document.getElementById('downloadBtn').addEventListener('click', function () {
+            const link = document.createElement('a');
+            link.href = 'assets/resume.pdf';
+            link.download = 'resume.pdf';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        });
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const progressBars = document.querySelectorAll('.skill__progress');
+            progressBars.forEach(bar => {
+                const value = bar.getAttribute('value');
+                bar.setAttribute('value', '0');
+                setTimeout(() => {
+                    bar.setAttribute('value', value);
+                }, 300);
+            });
+        });
+    </script>
+</body>
+
+</html>

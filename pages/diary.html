@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Дневник</title>
+    <link rel="stylesheet" href="../styles/styles.css">
+</head>
+
+<body>
+    <div class="page">
+        <header class="header">
+            <img class="header__logo" src="../images/icons/photo.jpg" alt="Логотип">
+            <h1 class="header__text">Фамилия Георгий Батькович</h1>
+        </header>
+        <nav class="nav">
+            <ul class="nav__list">
+                <li class="nav__item"><a class="nav__link" href="../index.html">Главная</a></li>
+                <li class="nav__item"><a class="nav__link" href="projects.html">Проекты</a></li>
+                <li class="nav__item"><a class="nav__link nav__link--active" href="diary.html">Дневник</a></li>
+                <li class="nav__item"><a class="nav__link" href="contacts.html">Контакты</a></li>
+            </ul>
+        </nav>
+        <section class="section">
+            <h2 class="section__title">Мой учебный прогресс</h2>
+
+            <div class="education">
+                <div class="education__list">
+                    <div class="education__item">
+                        <span class="education__date">15.01.2024</span>
+                        <span class="education__task">Верстка сайтов</span>
+                        <div class="education__status status--completed">
+                            <svg class="status-icon" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
+                            </svg>
+                            Выполнено
+                        </div>
+                    </div>
+                    <div class="education__item">
+                        <span class="education__date">20.01.2024</span>
+                        <span class="education__task">JavaScript основы</span>
+                        <div class="education__status status--in-progress">
+                            <svg class="status-icon" viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M12 4V1L8 5l4 4V6c3.31 0 6 2.69 6 6 0 1.01-.25 1.97-.7 2.8l1.46 1.46C19.54 15.03 20 13.57 20 12c0-4.42-3.58-8-8-8zm0 14c-3.31 0-6-2.69-6-6 0-1.01.25-1.97.7-2.8L5.24 7.74C4.46 8.97 4 10.43 4 12c0 4.42 3.58 8 8 8v3l4-4-4-4v3z" />
+                            </svg>
+                            In Progress
+                        </div>
+                    </div>
+                    <div class="education__item">
+                        <span class="education__date">25.01.2024</span>
+                        <span class="education__task">React основы</span>
+                        <div class="education__status status--in-progress">
+                            <svg class="status-icon" viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M12 4V1L8 5l4 4V6c3.31 0 6 2.69 6 6 0 1.01-.25 1.97-.7 2.8l1.46 1.46C19.54 15.03 20 13.57 20 12c0-4.42-3.58-8-8-8zm0 14c-3.31 0-6-2.69-6-6 0-1.01.25-1.97.7-2.8L5.24 7.74C4.46 8.97 4 10.43 4 12c0 4.42 3.58 8 8 8v3l4-4-4-4v3z" />
+                            </svg>
+                            In Progress
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="courses">
+                <h2 class="section__title">Текущие курсы</h3>
+                    <div class="courses__list">
+                        <div class="course">
+                            <div class="course__header">
+                                <span class="course__name">Веб-разработка</span>
+                                <progress class="course__progress" value="75" max="100"></progress>
+                                <span class="course__value">75%</span>
+                            </div>
+                        </div>
+                        <div class="course">
+                            <div class="course__header">
+                                <span class="course__name">JavaScript</span>
+                                <progress class="course__progress" value="60" max="100"></progress>
+                                <span class="course__value">60%</span>
+                            </div>
+                        </div>
+                        <div class="course">
+                            <div class="course__header">
+                                <span class="course__name">Java</span>
+                                <progress class="course__progress" value="40" max="100"></progress>
+                                <span class="course__value">40%</span>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+
+            <button class="add-button" id="addRecordBtn">Добавить запись</button>
+        </section>
+        <footer class="footer">
+            <p>© 2025 Все права защищены.</p>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const progressBars = document.querySelectorAll('.course__progress');
+            progressBars.forEach(bar => {
+                const value = bar.getAttribute('value');
+                bar.setAttribute('value', '0');
+
+                setTimeout(() => {
+                    bar.setAttribute('value', value);
+                }, 300);
+            });
+            document.getElementById('addRecordBtn').addEventListener('click', function () {
+                alert('Функция "Добавить запись" в разработке');
+            });
+        });
+    </script>
+</body>
+
+</html>
