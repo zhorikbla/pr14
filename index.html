@@ -3,18 +3,34 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <title>Главная</title>
     <link rel="stylesheet" href="styles/styles.css">
 </head>
 
 <body>
+<a class="skip-link" href="#main">Перейти к основному содержимому</a>    
     <div class="page">
         <header class="header">
-            <img class="header__logo" src="images/icons/photo.jpg" alt="Логотип">
+            <picture>
+                <source type="image/webp" 
+                srcset="images/icons/photo.webp,
+                        images/icons/photo@2x.webp 2x">
+                        <img class="header__logo" 
+             src="images/icons/photo.jpg" 
+             srcset="images/icons/photo.jpg 1x,
+                     images/icons/photo@2x.jpg 2x"
+             sizes="80px"
+             alt="Логотип" 
+             width="80" 
+             height="80"
+             loading="eager"
+             fetchpriority="high">
+            </picture>
             <h1 class="header__text">Фамилия Георгий Батькович</h1>
         </header>
-        <nav class="nav">
+        
+        <nav class="nav" aria-label="Основная навигация">
             <ul class="nav__list">
                 <li class="nav__item"><a class="nav__link nav__link--active" href="index.html">Главная</a></li>
                 <li class="nav__item"><a class="nav__link" href="pages/projects.html">Проекты</a></li>
@@ -22,79 +38,94 @@
                 <li class="nav__item"><a class="nav__link" href="pages/contacts.html">Контакты</a></li>
             </ul>
         </nav>
-        <section class="profile">
-            <div class="profile__photo-container">
-                <img class="profile__photo" src="images/icons/photo1.jpg" alt="Фото студента">
-            </div>
-            <div class="profile__info">
-                <p class="profile__text">Привет! Я студент группы ЭФБО-05-24. Увлекаюсь веб-разработкой.</p>
-                <button class="btn btn--download" id="downloadBtn">Скачать резюме</button>
-            </div>
-        </section>
-        <section class="section">
-            <h2 class="section__title">Мои навыки</h2>
-            <div class="skills">
-                <div class="skill">
-                    <div class="skill__row">
-                        <span class="skill__name">Flex</span>
-                        <progress class="skill__progress" value="75" max="100"></progress>
-                        <span class="skill__value">75%</span>
+        
+        <main id="main">
+            <section class="profile">
+                <div class="profile__photo-container">
+                    <picture>
+                        <source type="image/webp" srcset="images/icons/photo1.webp">
+                        <img class="profile__photo" src="images/icons/photo1.jpg" 
+                            alt="Фото студента"
+                            width="500" 
+                            height="450"
+                            loading="eager"
+                            fetchpriority="high">
+                    </picture>
+                </div>
+                <div class="profile__info">
+                    <p class="profile__text">Привет! Я студент группы ЭФБО-05-24. Увлекаюсь веб-разработкой.</p>
+                    <button class="btn btn--download" id="downloadBtn">Скачать резюме</button>
+                </div>
+            </section>
+            
+            <section class="section">
+                <h2 class="section__title">Мои навыки</h2>
+                <div class="skills">
+                    <div class="skill">
+                        <div class="skill__row">
+                            <span class="skill__name">Flex</span>
+                            <progress class="skill__progress" value="75" max="100" aria-label="Flex: 75%"></progress>
+                            <span class="skill__value">75%</span>
+                        </div>
+                    </div>
+                    <div class="skill">
+                        <div class="skill__row">
+                            <span class="skill__name">C#</span>
+                            <progress class="skill__progress" value="60" max="100" aria-label="C#: 60%"></progress>
+                            <span class="skill__value">60%</span>
+                        </div>
+                    </div>
+                    <div class="skill">
+                        <div class="skill__row">
+                            <span class="skill__name">Java</span>
+                            <progress class="skill__progress" value="75" max="100" aria-label="Java: 75%"></progress>
+                            <span class="skill__value">75%</span>
+                        </div>
+                    </div>
+                    <div class="skill">
+                        <div class="skill__row">
+                            <span class="skill__name">JavaScript</span>
+                            <progress class="skill__progress" value="60" max="100" aria-label="JavaScript: 60%"></progress>
+                            <span class="skill__value">60%</span>
+                        </div>
                     </div>
                 </div>
-                <div class="skill">
-                    <div class="skill__row">
-                        <span class="skill__name">C#</span>
-                        <progress class="skill__progress" value="60" max="100"></progress>
-                        <span class="skill__value">60%</span>
-                    </div>
-                </div>
-                <div class="skill">
-                    <div class="skill__row">
-                        <span class="skill__name">Java</span>
-                        <progress class="skill__progress" value="75" max="100"></progress>
-                        <span class="skill__value">75%</span>
-                    </div>
-                </div>
-                <div class="skill">
-                    <div class="skill__row">
-                        <span class="skill__name">JavaScript</span>
-                        <progress class="skill__progress" value="60" max="100"></progress>
-                        <span class="skill__value">60%</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <section class="section">
-            <h2 class="section__title">Лучшие проекты</h2>
-            <div class="projects">
-                <article class="project" onclick="openModal('modal1')">
-                    <h3 class="project__title">Мобильное приложение</h3>
-                    <p class="project__description">Подготовка к ЕГЭ по математике</p>
-                    <div class="project__click-hint">Нажмите для подробностей</div>
-                </article>
+            </section>
+            
+            <section class="section">
+                <h2 class="section__title">Лучшие проекты</h2>
+                <div class="projects">
+                    <article class="project" onclick="openModal('modal1')">
+                        <h3 class="project__title">Мобильное приложение</h3>
+                        <p class="project__description">Подготовка к ЕГЭ по математике</p>
+                        <div class="project__click-hint">Нажмите для подробностей</div>
+                    </article>
 
-                <article class="project" onclick="openModal('modal2')">
-                    <h3 class="project__title">Сайт Unique</h3>
-                    <p class="project__description">Киберспортивная организация</p>
-                    <div class="project__click-hint">Нажмите для подробностей</div>
-                </article>
+                    <article class="project" onclick="openModal('modal2')">
+                        <h3 class="project__title">Сайт Unique</h3>
+                        <p class="project__description">Киберспортивная организация</p>
+                        <div class="project__click-hint">Нажмите для подробностей</div>
+                    </article>
 
-                <article class="project" onclick="openModal('modal3')">
-                    <h3 class="project__title">Моя страничка</h3>
-                    <p class="project__description">Личный сайт-портфолио</p>
-                    <div class="project__click-hint">Нажмите для подробностей</div>
-                </article>
-        </section>
+                    <article class="project" onclick="openModal('modal3')">
+                        <h3 class="project__title">Моя страничка</h3>
+                        <p class="project__description">Личный сайт-портфолио</p>
+                        <div class="project__click-hint">Нажмите для подробностей</div>
+                    </article>
+                </div>
+            </section>
+        </main>
+        
         <footer class="footer">
             <p>© 2025 Все права защищены.</p>
         </footer>
     </div>
 
-    <!-- Модальные окна -->
+    
     <div id="modal1" class="modal">
         <div class="modal__content">
-            <button class="modal__close" onclick="closeModal('modal1')">&times;</button>
-            <img class="modal__image" src="images/icons/mob.jpeg" alt="Мобильное приложение">
+            <button class="modal__close" onclick="closeModal('modal1')" aria-label="Закрыть">&times;</button>
+            <img class="modal__image" src="images/icons/mob.jpeg" alt="Мобильное приложение" loading="lazy">
             <div class="modal__body">
                 <h3 class="modal__title">Мобильное приложение</h3>
                 <p class="modal__description">Полнофункциональное мобильное приложение для подготовки к ЕГЭ по
@@ -112,8 +143,8 @@
 
     <div id="modal2" class="modal">
         <div class="modal__content">
-            <button class="modal__close" onclick="closeModal('modal2')">&times;</button>
-            <img class="modal__image" src="images/icons/uniqe.png" alt="Сайт Unique">
+            <button class="modal__close" onclick="closeModal('modal2')" aria-label="Закрыть">&times;</button>
+            <img class="modal__image" src="images/icons/uniqe.png" alt="Сайт Unique" loading="lazy">
             <div class="modal__body">
                 <h3 class="modal__title">Сайт Unique</h3>
                 <p class="modal__description">Корпоративный сайт для киберспортивной организации Unique. Основные
@@ -131,8 +162,8 @@
 
     <div id="modal3" class="modal">
         <div class="modal__content">
-            <button class="modal__close" onclick="closeModal('modal3')">&times;</button>
-            <img class="modal__image" src="images/icons/lichka.jpeg" alt="Моя страничка">
+            <button class="modal__close" onclick="closeModal('modal3')" aria-label="Закрыть">&times;</button>
+            <img class="modal__image" src="images/icons/lichka.jpeg" alt="Моя страничка" loading="lazy">
             <div class="modal__body">
                 <h3 class="modal__title">Моя страничка</h3>
                 <p class="modal__description">Персональный веб-сайт портфолио с современным дизайном. Особенности:</p>
@@ -156,6 +187,7 @@
         function closeModal(modalId) {
             document.getElementById(modalId).style.display = 'none';
         }
+        
         window.onclick = function (event) {
             const modals = document.querySelectorAll('.modal');
             modals.forEach(modal => {
@@ -174,16 +206,41 @@
             document.body.removeChild(link);
         });
 
-        document.addEventListener('DOMContentLoaded', function () {
-            const progressBars = document.querySelectorAll('.skill__progress');
-            progressBars.forEach(bar => {
-                const value = bar.getAttribute('value');
-                bar.setAttribute('value', '0');
-                setTimeout(() => {
-                    bar.setAttribute('value', value);
-                }, 300);
+    document.addEventListener('DOMContentLoaded', function() {
+        const lazyImages = document.querySelectorAll('img[loading="lazy"]');
+        
+        if ('IntersectionObserver' in window) {
+            const imageObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        img.classList.add('loaded');
+                        observer.unobserve(img);
+                    }
+                });
+            }, {
+                rootMargin: '50px 0px', 
+                threshold: 0.1
             });
-        });
+            
+            lazyImages.forEach(img => imageObserver.observe(img));
+        } else {
+            lazyImages.forEach(img => {
+                img.classList.add('loaded');
+            });
+        }
+        
+       
+        function checkWebPSupport() {
+            const canvas = document.createElement('canvas');
+            if (canvas.getContext && canvas.getContext('2d')) {
+                return canvas.toDataURL('image/webp').indexOf('data:image/webp') === 0;
+            }
+            return false;
+        }
+        
+        console.log('WebP поддержка:', checkWebPSupport() ? 'Да' : 'Нет');
+    });
     </script>
 </body>
 

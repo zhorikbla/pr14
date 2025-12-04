@@ -3,18 +3,34 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <title>Проекты</title>
-    <link rel="stylesheet" href="../styles/styles.css">
+    <link rel="stylesheet" href="../styles/styles.css">    
 </head>
 
 <body>
+<a class="skip-link" href="#main">Перейти к основному содержимому</a>    
     <div class="page">
         <header class="header">
-            <img class="header__logo" src="../images/icons/photo.jpg" alt="Логотип">
+            <picture>
+                <source type="image/webp" 
+                        srcset="../images/icons/photo.webp,
+                                ../images/icons/photo@2x.webp 2x">
+                <img class="header__logo" 
+                     src="../images/icons/photo.jpg" 
+                     srcset="../images/icons/photo.jpg 1x,
+                             ../images/icons/photo@2x.jpg 2x"
+                     sizes="80px"
+                     alt="Логотип" 
+                     width="80" 
+                     height="80"
+                     loading="eager"
+                     fetchpriority="high">
+            </picture>
             <h1 class="header__text">Фамилия Георгий Батькович</h1>
         </header>
-        <nav class="nav">
+        
+        <nav class="nav" aria-label="Основная навигация">
             <ul class="nav__list">
                 <li class="nav__item"><a class="nav__link" href="../index.html">Главная</a></li>
                 <li class="nav__item"><a class="nav__link nav__link--active" href="projects.html">Проекты</a></li>
@@ -22,7 +38,8 @@
                 <li class="nav__item"><a class="nav__link" href="contacts.html">Контакты</a></li>
             </ul>
         </nav>
-        <main>
+        
+        <main id="main">
             <section class="section">
                 <div class="projects-header">
                     <h2 class="section__title" style="margin-bottom: 0;">Мои проекты</h2>
@@ -35,31 +52,60 @@
                 </div>
 
                 <div class="projects-grid">
-                    <article class="project" onclick="openModal('modal1')" data-tech="java">
+                    <article class="project" data-modal="modal1" data-tech="java">
                         <div class="project__image">
-                            <img src="../images/icons/mob.jpeg" alt="Мобильное приложение">
+                            <picture>
+                                <source type="image/webp" srcset="../images/icons/mob.webp">
+                                <img src="../images/icons/mob.jpeg" 
+                                     alt="Мобильное приложение"
+                                     loading="lazy"
+                                     width="300"
+                                     height="200">
+                            </picture>
                         </div>
                         <h3 class="project__title">Мобильное приложение</h3>
                         <p class="project__description">Подготовка к ЕГЭ по математике</p>
                         <div class="project__click-hint">Нажмите для подробностей</div>
                     </article>
-                    <article class="project" onclick="openModal('modal2')" data-tech="js">
+                    
+                    <article class="project" data-modal="modal2" data-tech="js">
                         <div class="project__image">
-                            <img src="../images/icons/uniqe.png" alt="Сайт Unique">
+                            <picture>
+                                <source type="image/webp" srcset="../images/icons/uniqe.webp">
+                                <img src="../images/icons/uniqe.png" 
+                                     alt="Сайт Unique"
+                                     loading="lazy"
+                                     width="300"
+                                     height="200">
+                            </picture>
                         </div>
                         <h3 class="project__title">Сайт Unique</h3>
                         <p class="project__description">Киберспортивная организация</p>
                         <div class="project__click-hint">Нажмите для подробностей</div>
                     </article>
-                    <article class="project" onclick="openModal('modal3')" data-tech="js">
+                    
+                    <article class="project" data-modal="modal3" data-tech="js">
                         <div class="project__image">
-                            <img src="../images/icons/lichka.jpeg" alt="Моя страничка">
+                            <picture>
+                                <source type="image/webp" srcset="../images/icons/lichka.webp">
+                                <img src="../images/icons/lichka.jpeg" 
+                                     alt="Моя страничка"
+                                     loading="lazy"
+                                     width="300"
+                                     height="200">
+                            </picture>
                         </div>
                         <h3 class="project__title">Моя страничка</h3>
                         <p class="project__description">Личный сайт-портфолио</p>
                         <div class="project__click-hint">Нажмите для подробностей</div>
                     </article>
-                    <article class="project" onclick="openModal('modal4')" data-tech="c++">
+                    
+                    <article class="project" data-modal="modal4" data-tech="c++">
+                        <div class="project__image">
+                            <div class="cpp-project-image">
+                                <span>C++/Qt Project</span>
+                            </div>
+                        </div>
                         <h3 class="project__title">Password Manager</h3>
                         <p class="project__description">Менеджер паролей на C++/Qt</p>
                         <div class="project__click-hint">Нажмите для подробностей</div>
@@ -67,6 +113,7 @@
                 </div>
             </section>
         </main>
+        
         <footer class="footer">
             <p>© 2025 Все права защищены.</p>
         </footer>
@@ -75,11 +122,11 @@
     <!-- Модальные окна для проектов -->
     <div id="modal1" class="modal">
         <div class="modal__content">
-            <button class="modal__close" onclick="closeModal('modal1')">&times;</button>
+            <button class="modal__close" data-close="modal1" aria-label="Закрыть">&times;</button>
             <div class="modal__header">
                 <h3 class="modal__title">Мобильное приложение</h3>
             </div>
-            <img class="modal__image" src="../images/icons/mob.jpeg" alt="Мобильное приложение">
+            <img class="modal__image" src="../images/icons/mob.jpeg" alt="Мобильное приложение" loading="lazy">
             <div class="modal__body">
                 <p class="modal__description">Полнофункциональное мобильное приложение для подготовки к ЕГЭ по
                     профильной математике. Включает в себя:</p>
@@ -98,11 +145,11 @@
 
     <div id="modal2" class="modal">
         <div class="modal__content">
-            <button class="modal__close" onclick="closeModal('modal2')">&times;</button>
+            <button class="modal__close" data-close="modal2" aria-label="Закрыть">&times;</button>
             <div class="modal__header">
                 <h3 class="modal__title">Сайт Unique</h3>
             </div>
-            <img class="modal__image" src="../images/icons/uniqe.png" alt="Сайт Unique">
+            <img class="modal__image" src="../images/icons/uniqe.png" alt="Сайт Unique" loading="lazy">
             <div class="modal__body">
                 <p class="modal__description">Корпоративный сайт для киберспортивной организации Unique. Основные
                     функции:</p>
@@ -124,11 +171,11 @@
 
     <div id="modal3" class="modal">
         <div class="modal__content">
-            <button class="modal__close" onclick="closeModal('modal3')">&times;</button>
+            <button class="modal__close" data-close="modal3" aria-label="Закрыть">&times;</button>
             <div class="modal__header">
                 <h3 class="modal__title">Моя страничка</h3>
             </div>
-            <img class="modal__image" src="../images/icons/lichka.jpeg" alt="Моя страничка">
+            <img class="modal__image" src="../images/icons/lichka.jpeg" alt="Моя страничка" loading="lazy">
             <div class="modal__body">
                 <p class="modal__description">Персональный веб-сайт портфолио с современным дизайном. Особенности:</p>
                 <ul class="modal__description-nav">
@@ -149,11 +196,12 @@
 
     <div id="modal4" class="modal">
         <div class="modal__content">
-            <button class="modal__close" onclick="closeModal('modal4')">&times;</button>
+            <button class="modal__close" data-close="modal4" aria-label="Закрыть">&times;</button>
             <div class="modal__header">
                 <h3 class="modal__title">Password Manager</h3>
             </div>
             <div class="modal__body">
+                <div class="cpp-modal-image">C++</div>
                 <p class="modal__description">Безопасный менеджер паролей с графическим интерфейсом. Основные
                     возможности:</p>
                 <ul class="modal__description-nav">
@@ -171,47 +219,160 @@
     </div>
 
     <script>
+        // Функции для модальных окон
         function openModal(modalId) {
-            document.getElementById(modalId).style.display = 'block';
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.style.display = 'block';
+                document.body.style.overflow = 'hidden';
+            }
         }
 
         function closeModal(modalId) {
-            document.getElementById(modalId).style.display = 'none';
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
         }
+
+        // Функция фильтрации проектов
+        function filterProjects(filter) {
+            const projects = document.querySelectorAll('.project');
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            
+            // Обновляем активную кнопку фильтра
+            filterBtns.forEach(btn => {
+                if (btn.dataset.filter === filter) {
+                    btn.classList.add('active');
+                } else {
+                    btn.classList.remove('active');
+                }
+            });
+            
+            // Показываем/скрываем проекты
+            projects.forEach(project => {
+                if (filter === 'all' || project.dataset.tech === filter) {
+                    project.style.display = 'block';
+                    setTimeout(() => {
+                        project.style.opacity = '1';
+                        project.style.transform = 'scale(1)';
+                    }, 10);
+                } else {
+                    project.style.opacity = '0';
+                    project.style.transform = 'scale(0.8)';
+                    setTimeout(() => {
+                        project.style.display = 'none';
+                    }, 300);
+                }
+            });
+        }
+
+        // Lazy loading изображений
+        function initLazyLoading() {
+            const lazyImages = document.querySelectorAll('img[loading="lazy"]');
+            
+            if ('IntersectionObserver' in window) {
+                const imageObserver = new IntersectionObserver((entries, observer) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const img = entry.target;
+                            img.classList.add('loaded');
+                            observer.unobserve(img);
+                        }
+                    });
+                }, {
+                    rootMargin: '50px 0px', 
+                    threshold: 0.1
+                });
+                
+                lazyImages.forEach(img => imageObserver.observe(img));
+            } else {
+                lazyImages.forEach(img => {
+                    img.classList.add('loaded');
+                });
+            }
+        }
+
+        // Проверка поддержки WebP
+        function checkWebPSupport() {
+            const canvas = document.createElement('canvas');
+            if (canvas.getContext && canvas.getContext('2d')) {
+                return canvas.toDataURL('image/webp').indexOf('data:image/webp') === 0;
+            }
+            return false;
+        }
+
+        // Инициализация при загрузке страницы
+        document.addEventListener('DOMContentLoaded', function() {
+            // Инициализация ленивой загрузки
+            initLazyLoading();
+            
+            // Проверка WebP поддержки
+            console.log('WebP поддержка:', checkWebPSupport() ? 'Да' : 'Нет');
+            
+            // Назначаем обработчики для кнопок фильтрации
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const filter = this.getAttribute('data-filter');
+                    filterProjects(filter);
+                });
+            });
+            
+            // Назначаем обработчики для проектов (открытие модальных окон)
+            const projects = document.querySelectorAll('.project');
+            projects.forEach(project => {
+                project.addEventListener('click', function() {
+                    const modalId = this.getAttribute('data-modal');
+                    openModal(modalId);
+                });
+            });
+            
+            // Назначаем обработчики для кнопок закрытия модальных окон
+            const closeBtns = document.querySelectorAll('.modal__close');
+            closeBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const modalId = this.getAttribute('data-close');
+                    closeModal(modalId);
+                });
+            });
+            
+            // Закрытие модальных окон при клике вне контента
+            const modals = document.querySelectorAll('.modal');
+            modals.forEach(modal => {
+                modal.addEventListener('click', function(e) {
+                    if (e.target === this) {
+                        closeModal(this.id);
+                    }
+                });
+            });
+            
+            // Закрытие модальных окон при нажатии Escape
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    modals.forEach(modal => {
+                        if (modal.style.display === 'block') {
+                            closeModal(modal.id);
+                        }
+                    });
+                }
+            });
+        });
+
+        // Глобальные функции для onclick (совместимость)
+        window.openModal = openModal;
+        window.closeModal = closeModal;
+        
         window.onclick = function (event) {
             const modals = document.querySelectorAll('.modal');
             modals.forEach(modal => {
                 if (event.target === modal) {
                     modal.style.display = 'none';
+                    document.body.style.overflow = 'auto';
                 }
             });
         }
-
-        // Фильтрация проектов
-        document.addEventListener('DOMContentLoaded', function () {
-            const filterBtns = document.querySelectorAll('.filter-btn');
-            const projects = document.querySelectorAll('.project');
-
-            filterBtns.forEach(btn => {
-                btn.addEventListener('click', function () {
-                    filterBtns.forEach(b => b.classList.remove('active'));
-                    this.classList.add('active');
-
-                    const filter = this.getAttribute('data-filter');
-
-                    projects.forEach(project => {
-                        const projectTech = project.getAttribute('data-tech');
-
-                        if (filter === 'all' || projectTech === filter) {
-                            project.style.display = 'block';
-                        } else {
-                            project.style.display = 'none';
-                        }
-                    });
-                });
-            });
-        });
     </script>
 </body>
-
 </html>

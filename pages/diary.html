@@ -3,18 +3,34 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <title>Дневник</title>
     <link rel="stylesheet" href="../styles/styles.css">
 </head>
 
 <body>
+<a class="skip-link" href="#main">Перейти к основному содержимому</a>    
     <div class="page">
         <header class="header">
-            <img class="header__logo" src="../images/icons/photo.jpg" alt="Логотип">
+            <picture>
+                <source type="image/webp" 
+                        srcset="../images/icons/photo.webp,
+                                ../images/icons/photo@2x.webp 2x">
+                <img class="header__logo" 
+                     src="../images/icons/photo.jpg" 
+                     srcset="../images/icons/photo.jpg 1x,
+                             ../images/icons/photo@2x.jpg 2x"
+                     sizes="80px"
+                     alt="Логотип" 
+                     width="80" 
+                     height="80"
+                     loading="eager"
+                     fetchpriority="high">
+            </picture>
             <h1 class="header__text">Фамилия Георгий Батькович</h1>
         </header>
-        <nav class="nav">
+        
+        <nav class="nav" aria-label="Основная навигация">
             <ul class="nav__list">
                 <li class="nav__item"><a class="nav__link" href="../index.html">Главная</a></li>
                 <li class="nav__item"><a class="nav__link" href="projects.html">Проекты</a></li>
@@ -22,95 +38,123 @@
                 <li class="nav__item"><a class="nav__link" href="contacts.html">Контакты</a></li>
             </ul>
         </nav>
-        <section class="section">
-            <h2 class="section__title">Мой учебный прогресс</h2>
+        
+        <main id="main">
+            <section class="section">
+                <h2 class="section__title">Мой учебный прогресс</h2>
 
-            <div class="education">
-                <div class="education__list">
-                    <div class="education__item">
-                        <span class="education__date">15.01.2024</span>
-                        <span class="education__task">Верстка сайтов</span>
-                        <div class="education__status status--completed">
-                            <svg class="status-icon" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
-                            </svg>
-                            Выполнено
+                <div class="education">
+                    <div class="education__list">
+                        <div class="education__item">
+                            <span class="education__date">15.01.2024</span>
+                            <span class="education__task">Верстка сайтов</span>
+                            <div class="education__status status--completed">
+                                <!-- Иконка статуса - SVG уже адаптивен, но добавим размеры -->
+                                <svg class="status-icon" 
+                                viewBox="0 0 24 24" 
+                                fill="currentColor"
+                                width="20" 
+                                height="20"
+                                aria-hidden="true">
+                                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
+                                </svg>
+                                Выполнено
+                            </div>
                         </div>
-                    </div>
-                    <div class="education__item">
-                        <span class="education__date">20.01.2024</span>
-                        <span class="education__task">JavaScript основы</span>
-                        <div class="education__status status--in-progress">
-                            <svg class="status-icon" viewBox="0 0 24 24" fill="currentColor">
-                                <path
-                                    d="M12 4V1L8 5l4 4V6c3.31 0 6 2.69 6 6 0 1.01-.25 1.97-.7 2.8l1.46 1.46C19.54 15.03 20 13.57 20 12c0-4.42-3.58-8-8-8zm0 14c-3.31 0-6-2.69-6-6 0-1.01.25-1.97.7-2.8L5.24 7.74C4.46 8.97 4 10.43 4 12c0 4.42 3.58 8 8 8v3l4-4-4-4v3z" />
-                            </svg>
-                            In Progress
+                        <div class="education__item">
+                            <span class="education__date">20.01.2024</span>
+                            <span class="education__task">JavaScript основы</span>
+                            <div class="education__status status--in-progress">
+                                <svg class="status-icon" viewBox="0 0 24 24" fill="currentColor">
+                                    <path
+                                        d="M12 4V1L8 5l4 4V6c3.31 0 6 2.69 6 6 0 1.01-.25 1.97-.7 2.8l1.46 1.46C19.54 15.03 20 13.57 20 12c0-4.42-3.58-8-8-8zm0 14c-3.31 0-6-2.69-6-6 0-1.01.25-1.97.7-2.8L5.24 7.74C4.46 8.97 4 10.43 4 12c0 4.42 3.58 8 8 8v3l4-4-4-4v3z" />
+                                </svg>
+                                In Progress
+                            </div>
                         </div>
-                    </div>
-                    <div class="education__item">
-                        <span class="education__date">25.01.2024</span>
-                        <span class="education__task">React основы</span>
-                        <div class="education__status status--in-progress">
-                            <svg class="status-icon" viewBox="0 0 24 24" fill="currentColor">
-                                <path
-                                    d="M12 4V1L8 5l4 4V6c3.31 0 6 2.69 6 6 0 1.01-.25 1.97-.7 2.8l1.46 1.46C19.54 15.03 20 13.57 20 12c0-4.42-3.58-8-8-8zm0 14c-3.31 0-6-2.69-6-6 0-1.01.25-1.97.7-2.8L5.24 7.74C4.46 8.97 4 10.43 4 12c0 4.42 3.58 8 8 8v3l4-4-4-4v3z" />
-                            </svg>
-                            In Progress
+                        <div class="education__item">
+                            <span class="education__date">25.01.2024</span>
+                            <span class="education__task">React основы</span>
+                            <div class="education__status status--in-progress">
+                                <svg class="status-icon" viewBox="0 0 24 24" fill="currentColor">
+                                    <path
+                                        d="M12 4V1L8 5l4 4V6c3.31 0 6 2.69 6 6 0 1.01-.25 1.97-.7 2.8l1.46 1.46C19.54 15.03 20 13.57 20 12c0-4.42-3.58-8-8-8zm0 14c-3.31 0-6-2.69-6-6 0-1.01.25-1.97.7-2.8L5.24 7.74C4.46 8.97 4 10.43 4 12c0 4.42 3.58 8 8 8v3l4-4-4-4v3z" />
+                                </svg>
+                                In Progress
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="courses">
-                <h2 class="section__title">Текущие курсы</h3>
+                <div class="courses">
+                    <h3 class="courses__title">Текущие курсы</h3>
                     <div class="courses__list">
                         <div class="course">
                             <div class="course__header">
                                 <span class="course__name">Веб-разработка</span>
-                                <progress class="course__progress" value="75" max="100"></progress>
+                                <progress class="course__progress" value="75" max="100" aria-label="Веб-разработка: 75%"></progress>
                                 <span class="course__value">75%</span>
                             </div>
                         </div>
                         <div class="course">
                             <div class="course__header">
                                 <span class="course__name">JavaScript</span>
-                                <progress class="course__progress" value="60" max="100"></progress>
+                                <progress class="course__progress" value="60" max="100" aria-label="JavaScript: 60%"></progress>
                                 <span class="course__value">60%</span>
                             </div>
                         </div>
                         <div class="course">
                             <div class="course__header">
                                 <span class="course__name">Java</span>
-                                <progress class="course__progress" value="40" max="100"></progress>
+                                <progress class="course__progress" value="40" max="100" aria-label="Java: 40%"></progress>
                                 <span class="course__value">40%</span>
                             </div>
                         </div>
                     </div>
-            </div>
+                </div>
 
-            <button class="add-button" id="addRecordBtn">Добавить запись</button>
-        </section>
+                <button class="add-button" id="addRecordBtn">Добавить запись</button>
+            </section>
+        </main>
+        
         <footer class="footer">
             <p>© 2025 Все права защищены.</p>
         </footer>
     </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const progressBars = document.querySelectorAll('.course__progress');
-            progressBars.forEach(bar => {
-                const value = bar.getAttribute('value');
-                bar.setAttribute('value', '0');
-
-                setTimeout(() => {
-                    bar.setAttribute('value', value);
-                }, 300);
+        document.addEventListener('DOMContentLoaded', function() {
+        const lazyImages = document.querySelectorAll('img[loading="lazy"]');
+        if ('IntersectionObserver' in window) {
+            const imageObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        img.classList.add('loaded');
+                        observer.unobserve(img);
+                    }
+                });
+            }, {
+                rootMargin: '50px 0px', 
+                threshold: 0.1
             });
-            document.getElementById('addRecordBtn').addEventListener('click', function () {
-                alert('Функция "Добавить запись" в разработке');
+            
+            lazyImages.forEach(img => imageObserver.observe(img));
+        } else {
+            lazyImages.forEach(img => {
+                img.classList.add('loaded');
             });
-        });
+        }
+        function checkWebPSupport() {
+            const canvas = document.createElement('canvas');
+            if (canvas.getContext && canvas.getContext('2d')) {
+                return canvas.toDataURL('image/webp').indexOf('data:image/webp') === 0;
+            }
+            return false;
+        }
+        
+        console.log('WebP поддержка:', checkWebPSupport() ? 'Да' : 'Нет');
+    });
     </script>
 </body>
 
