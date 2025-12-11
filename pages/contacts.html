@@ -9,7 +9,7 @@
 </head>
 
 <body>
-<a class="skip-link" href="#main">Перейти к основному содержимому</a>    
+    <a class="skip-link" href="#main">Перейти к основному содержимому</a>    
     <div class="page">
         <header class="header">
             <picture>
@@ -29,7 +29,6 @@
             </picture>
             <h1 class="header__text">Фамилия Георгий Батькович</h1>
         </header>
-        
         <nav class="nav" aria-label="Основная навигация">
             <ul class="nav__list">
                 <li class="nav__item"><a class="nav__link" href="../index.html">Главная</a></li>
@@ -43,28 +42,69 @@
             <section class="section">
                 <h2 class="section__contacts_title">Свяжитесь со мной</h2>
                 <div class="section__contacts-forma">
-                    <form class="contact-form" id="contactForm">
-                        <div class="form-group">
-                            <label class="form-label" for="name">Имя:</label>
-                            <input class="form-input" type="text" id="name" name="name" required
-                                placeholder="Введите ваше имя"
-                                aria-describedby="name-hint">
-                            <small id="name-hint" class="visually-hidden">Ваше полное имя</small>
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label" for="email">Email:</label>
-                            <input class="form-input" type="email" id="email" name="email" required
-                                placeholder="Введите ваш email"
-                                aria-describedby="email-hint">
-                            <small id="email-hint" class="visually-hidden">Мы ответим на этот адрес</small>
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label" for="message">Сообщение:</label>
-                            <textarea class="form-textarea" id="message" name="message" required
-                                placeholder="Введите ваше сообщение"
-                                aria-describedby="message-hint"></textarea>
-                            <small id="message-hint" class="visually-hidden">Подробно опишите ваш вопрос</small>
-                        </div>
+                    <form class="contact-form" id="contactForm" aria-label="Форма обратной связи" novalidate>
+                        <fieldset>
+                            <legend class="visually-hidden">Персональные данные</legend>
+                            <div class="form-group">
+                                <label class="form-label" for="name">
+                                    Имя:
+                                    <span class="required-marker" aria-hidden="true">*</span>
+                                    <span class="visually-hidden">(обязательное поле)</span>
+                                </label>
+                                <input class="form-input" 
+                                       type="text" 
+                                       id="name" 
+                                       name="name" 
+                                       required
+                                       aria-required="true"
+                                       placeholder="Введите ваше имя"
+                                       aria-describedby="name-hint name-error"
+                                       aria-invalid="false">
+                                <small id="name-hint" class="form-hint visually-hidden">
+                                    Ваше полное имя
+                                </small>
+                                <small id="name-error" class="form-error" role="alert" aria-live="assertive"></small>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="email">
+                                    Email:
+                                    <span class="required-marker" aria-hidden="true">*</span>
+                                    <span class="visually-hidden">(обязательное поле)</span>
+                                </label>
+                                <input class="form-input" 
+                                       type="email" 
+                                       id="email" 
+                                       name="email" 
+                                       required
+                                       aria-required="true"
+                                       placeholder="Введите ваш email"
+                                       aria-describedby="email-hint email-error"
+                                       aria-invalid="false">
+                                <small id="email-hint" class="form-hint visually-hidden">
+                                    Мы ответим на этот адрес
+                                </small>
+                                <small id="email-error" class="form-error" role="alert" aria-live="assertive"></small>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="message">
+                                    Сообщение:
+                                    <span class="required-marker" aria-hidden="true">*</span>
+                                    <span class="visually-hidden">(обязательное поле)</span>
+                                </label>
+                                <textarea class="form-textarea" 
+                                          id="message" 
+                                          name="message" 
+                                          required
+                                          aria-required="true"
+                                          placeholder="Введите ваше сообщение"
+                                          aria-describedby="message-hint message-error"
+                                          aria-invalid="false"></textarea>
+                                <small id="message-hint" class="form-hint visually-hidden">
+                                    Подробно опишите ваш вопрос
+                                </small>
+                                <small id="message-error" class="form-error" role="alert" aria-live="assertive"></small>
+                            </div>
+                        </fieldset>
                         <button type="submit" class="form-submit">Отправить сообщение</button>
                     </form>
                 </div>
@@ -72,11 +112,11 @@
                     <h2>Контакты:</h2>
                     <div class="contact-item">
                         <svg class="contact-icon" 
-                        viewBox="0 0 24 24" 
-                        fill="currentColor"
-                        width="24" 
-                        height="24"
-                        aria-hidden="true">
+                            viewBox="0 0 24 24" 
+                            fill="currentColor"
+                            width="24" 
+                            height="24"
+                            aria-hidden="true">
                             <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
                         </svg>
                         <p class="contact-text">email_my@mail.ru</p>
@@ -105,52 +145,133 @@
     </div>
 
     <script>
-        document.getElementById('contactForm').addEventListener('submit', function (e) {
-            e.preventDefault();
-            const formData = {
-                name: document.getElementById('name').value,
-                email: document.getElementById('email').value,
-                message: document.getElementById('message').value
-            };
-            const contactData = formData;
-            console.log('Данные формы:', contactData);
-            alert('Сообщение отправлено! Данные сохранены.\n\nИмя: ' + contactData.name + '\nEmail: ' + contactData.email + '\nСообщение: ' + contactData.message);
-            this.reset();
-        });
-    
         document.addEventListener('DOMContentLoaded', function() {
-        const lazyImages = document.querySelectorAll('img[loading="lazy"]');
-        if ('IntersectionObserver' in window) {
-            const imageObserver = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const img = entry.target;
-                        img.classList.add('loaded');
-                        observer.unobserve(img);
-                    }
-                });
-            }, {
-                rootMargin: '50px 0px', 
-                threshold: 0.1
-            });
-            
-            lazyImages.forEach(img => imageObserver.observe(img));
-        } else {
-            lazyImages.forEach(img => {
-                img.classList.add('loaded');
-            });
+    const form = document.getElementById('contactForm');
+    const fields = {
+        name: document.getElementById('name'),
+        email: document.getElementById('email'),
+        message: document.getElementById('message')
+    };
+    function clearFieldError(field) {
+        const errorEl = document.getElementById(field.id + '-error');
+        if (errorEl) {
+            errorEl.textContent = '';
         }
-        function checkWebPSupport() {
-            const canvas = document.createElement('canvas');
-            if (canvas.getContext && canvas.getContext('2d')) {
-                return canvas.toDataURL('image/webp').indexOf('data:image/webp') === 0;
+        field.setAttribute('aria-invalid', 'false');
+    }
+    function validateField(field) {
+        const errorEl = document.getElementById(field.id + '-error');
+        let isValid = true;
+        let errorMessage = '';
+        clearFieldError(field);
+        if (!field.value.trim()) {
+            isValid = false;
+            errorMessage = 'Это поле обязательно для заполнения';
+        } 
+        else if (field.type === 'email' && field.value.trim()) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(field.value)) {
+                isValid = false;
+                errorMessage = 'Введите корректный email адрес';
             }
-            return false;
+        }
+        else if (field.id === 'message' && field.value.trim().length < 10) {
+            isValid = false;
+            errorMessage = 'Сообщение должно содержать не менее 10 символов';
+        }
+        if (!isValid && errorMessage) {
+            field.setAttribute('aria-invalid', 'true');
+            if (errorEl) {
+                errorEl.textContent = errorMessage;
+            }
         }
         
-        console.log('WebP поддержка:', checkWebPSupport() ? 'Да' : 'Нет');
+        return isValid;
+    }
+    Object.values(fields).forEach(field => {
+        field.addEventListener('input', function() {
+            validateField(this);
+        });
+        
+        field.addEventListener('blur', function() {
+            validateField(this);
+        });
     });
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        let isValid = true;
+        let firstErrorField = null;
+        Object.values(fields).forEach(field => {
+            if (!validateField(field)) {
+                isValid = false;
+                if (!firstErrorField) firstErrorField = field;
+            }
+        });
+        
+        if (!isValid) {
+            if (firstErrorField) {
+                firstErrorField.focus();
+            }
+            return;
+        }
+        const formData = {
+            name: fields.name.value,
+            email: fields.email.value,
+            message: fields.message.value
+        };
+        console.log('Данные формы:', formData);
+        alert('Сообщение отправлено! Данные сохранены.\n\nИмя: ' + 
+              formData.name + '\nEmail: ' + formData.email + 
+              '\nСообщение: ' + formData.message);
+        form.reset();
+        
+        Object.values(fields).forEach(field => {
+            clearFieldError(field);
+        });
+        if (fields.name) {
+            setTimeout(() => fields.name.focus(), 100);
+        }
+    });
+    document.addEventListener('keydown', function(event) {
+        if (event.key === 'Escape' && 
+            (document.activeElement.tagName === 'INPUT' || 
+             document.activeElement.tagName === 'TEXTAREA')) {
+            event.target.value = '';
+            clearFieldError(event.target); 
+        }
+    });
+    
+    const lazyImages = document.querySelectorAll('img[loading="lazy"]');
+    if ('IntersectionObserver' in window) {
+        const imageObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    img.classList.add('loaded');
+                    observer.unobserve(img);
+                }
+            });
+        }, {
+            rootMargin: '50px 0px', 
+            threshold: 0.1
+        });
+        
+        lazyImages.forEach(img => imageObserver.observe(img));
+    } else {
+        lazyImages.forEach(img => img.classList.add('loaded'));
+    }
+    
+    function checkWebPSupport() {
+        const canvas = document.createElement('canvas');
+        if (canvas.getContext && canvas.getContext('2d')) {
+            return canvas.toDataURL('image/webp').indexOf('data:image/webp') === 0;
+        }
+        return false;
+    }
+    
+    console.log('WebP поддержка:', checkWebPSupport() ? 'Да' : 'Нет');
+});
     </script>
 </body>
-
 </html>
