@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <a class="skip-link" href="#main">Перейти к основному содержимому</a>    
+    <a class="skip-link" href="#main">Перейти к основному содержимому</a>
     <div class="page">
         <header class="header">
             <picture>
@@ -21,7 +21,7 @@
                      srcset="../images/icons/photo.jpg 1x,
                              ../images/icons/photo@2x.jpg 2x"
                      sizes="80px"
-                     alt="Логотип" 
+                     alt="Логотип сайта" 
                      width="80" 
                      height="80"
                      loading="eager"
@@ -29,6 +29,7 @@
             </picture>
             <h1 class="header__text">Фамилия Георгий Батькович</h1>
         </header>
+        
         <nav class="nav" aria-label="Основная навигация">
             <ul class="nav__list">
                 <li class="nav__item"><a class="nav__link" href="../index.html">Главная</a></li>
@@ -45,6 +46,7 @@
                     <form class="contact-form" id="contactForm" aria-label="Форма обратной связи" novalidate>
                         <fieldset>
                             <legend class="visually-hidden">Персональные данные</legend>
+                            
                             <div class="form-group">
                                 <label class="form-label" for="name">
                                     Имя:
@@ -65,6 +67,7 @@
                                 </small>
                                 <small id="name-error" class="form-error" role="alert" aria-live="assertive"></small>
                             </div>
+                            
                             <div class="form-group">
                                 <label class="form-label" for="email">
                                     Email:
@@ -85,6 +88,7 @@
                                 </small>
                                 <small id="email-error" class="form-error" role="alert" aria-live="assertive"></small>
                             </div>
+                            
                             <div class="form-group">
                                 <label class="form-label" for="message">
                                     Сообщение:
@@ -105,9 +109,11 @@
                                 <small id="message-error" class="form-error" role="alert" aria-live="assertive"></small>
                             </div>
                         </fieldset>
+                        
                         <button type="submit" class="form-submit">Отправить сообщение</button>
                     </form>
                 </div>
+                
                 <div class="contacts">
                     <h2>Контакты:</h2>
                     <div class="contact-item">
@@ -146,150 +152,160 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-    const form = document.getElementById('contactForm');
-    const fields = {
-        name: document.getElementById('name'),
-        email: document.getElementById('email'),
-        message: document.getElementById('message')
-    };
-    function clearFieldError(field) {
-        const errorEl = document.getElementById(field.id + '-error');
-        if (errorEl) {
-            errorEl.textContent = '';
-        }
-        field.setAttribute('aria-invalid', 'false');
-    }
-    function validateField(field) {
-        const errorEl = document.getElementById(field.id + '-error');
-        let isValid = true;
-        let errorMessage = '';
-        clearFieldError(field);
-        if (!field.value.trim()) {
-            isValid = false;
-            errorMessage = 'Это поле обязательно для заполнения';
-        } 
-        else if (field.type === 'email' && field.value.trim()) {
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (!emailRegex.test(field.value)) {
-                isValid = false;
-                errorMessage = 'Введите корректный email адрес';
+            const form = document.getElementById('contactForm');
+            const fields = {
+                name: document.getElementById('name'),
+                email: document.getElementById('email'),
+                message: document.getElementById('message')
+            };
+            function clearFieldError(field) {
+                const errorEl = document.getElementById(field.id + '-error');
+                if (errorEl) {
+                    errorEl.textContent = '';
+                }
+                field.setAttribute('aria-invalid', 'false');
             }
-        }
-        else if (field.id === 'message' && field.value.trim().length < 10) {
-            isValid = false;
-            errorMessage = 'Сообщение должно содержать не менее 10 символов';
-        }
-        if (!isValid && errorMessage) {
-            field.setAttribute('aria-invalid', 'true');
-            if (errorEl) {
-                errorEl.textContent = errorMessage;
+            function validateField(field) {
+                const errorEl = document.getElementById(field.id + '-error');
+                let isValid = true;
+                let errorMessage = '';
+                clearFieldError(field);
+                if (!field.value.trim()) {
+                    isValid = false;
+                    errorMessage = 'Это поле обязательно для заполнения';
+                } 
+                else if (field.type === 'email' && field.value.trim()) {
+                    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                    if (!emailRegex.test(field.value)) {
+                        isValid = false;
+                        errorMessage = 'Введите корректный email адрес';
+                    }
+                }
+                else if (field.id === 'message' && field.value.trim().length < 10) {
+                    isValid = false;
+                    errorMessage = 'Сообщение должно содержать не менее 10 символов';
+                }
+                if (!isValid && errorMessage) {
+                    field.setAttribute('aria-invalid', 'true');
+                    if (errorEl) {
+                        errorEl.textContent = errorMessage;
+                    }
+                }
+                
+                return isValid;
             }
-        }
-        
-        return isValid;
-    }
-// ТАБ НЕ УБЕГАЕТ
-    form.addEventListener('keydown', function(event) {
-    if (event.key === 'Tab') {
-        const focusableElements = form.querySelectorAll(
-            'input, textarea, button, [href], [tabindex]:not([tabindex="-1"])'
-        );
-        const firstElement = focusableElements[0];
-        const lastElement = focusableElements[focusableElements.length - 1];
-        if (event.shiftKey && document.activeElement === firstElement) {
-            event.preventDefault();
-            lastElement.focus();
-        } else if (!event.shiftKey && document.activeElement === lastElement) {
-            event.preventDefault();
-            firstElement.focus();
-        }
-    }
-});
-// ТАБ НЕ УБЕГАЕТ
-    Object.values(fields).forEach(field => {
-        field.addEventListener('input', function() {
-            validateField(this);
-        });
-        
-        field.addEventListener('blur', function() {
-            validateField(this);
-        });
-    });
-    form.addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        let isValid = true;
-        let firstErrorField = null;
-        Object.values(fields).forEach(field => {
-            if (!validateField(field)) {
-                isValid = false;
-                if (!firstErrorField) firstErrorField = field;
-            }
-        });
-        
-        if (!isValid) {
-            if (firstErrorField) {
-                firstErrorField.focus();
-            }
-            return;
-        }
-        const formData = {
-            name: fields.name.value,
-            email: fields.email.value,
-            message: fields.message.value
-        };
-        console.log('Данные формы:', formData);
-        alert('Сообщение отправлено! Данные сохранены.\n\nИмя: ' + 
-              formData.name + '\nEmail: ' + formData.email + 
-              '\nСообщение: ' + formData.message);
-        form.reset();
-        
-        Object.values(fields).forEach(field => {
-            clearFieldError(field);
-        });
-        if (fields.name) {
-            setTimeout(() => fields.name.focus(), 100);
-        }
-    });
-    document.addEventListener('keydown', function(event) {
-        if (event.key === 'Escape' && 
-            (document.activeElement.tagName === 'INPUT' || 
-             document.activeElement.tagName === 'TEXTAREA')) {
-            event.target.value = '';
-            clearFieldError(event.target); 
-        }
-    });
-    
-    const lazyImages = document.querySelectorAll('img[loading="lazy"]');
-    if ('IntersectionObserver' in window) {
-        const imageObserver = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const img = entry.target;
-                    img.classList.add('loaded');
-                    observer.unobserve(img);
+            Object.values(fields).forEach(field => {
+                field.addEventListener('input', function() {
+                    validateField(this);
+                });
+                
+                field.addEventListener('blur', function() {
+                    validateField(this);
+                });
+
+                field.addEventListener('keydown', function(event) {
+                    if (event.key === 'Enter' && !event.ctrlKey && !event.shiftKey) {
+                        if (!validateField(this)) {
+                            event.preventDefault();
+                            return false;
+                        }
+                    }
+                });
+            });
+
+            form.addEventListener('keydown', function(event) {
+                if (event.key === 'Tab') {
+                    const focusableElements = form.querySelectorAll(
+                        'input, textarea, button, [href], [tabindex]:not([tabindex="-1"])'
+                    );
+                    const firstElement = focusableElements[0];
+                    const lastElement = focusableElements[focusableElements.length - 1];
+                    if (event.shiftKey && document.activeElement === firstElement) {
+                        event.preventDefault();
+                        lastElement.focus();
+                    } else if (!event.shiftKey && document.activeElement === lastElement) {
+                        event.preventDefault();
+                        firstElement.focus();
+                    }
+                }
+                if (event.key === 'Escape' && 
+                    (document.activeElement.tagName === 'INPUT' || 
+                     document.activeElement.tagName === 'TEXTAREA')) {
+                    event.target.value = '';
+                    clearFieldError(event.target);
                 }
             });
-        }, {
-            rootMargin: '50px 0px', 
-            threshold: 0.1
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                let isValid = true;
+                let firstErrorField = null;
+                Object.values(fields).forEach(field => {
+                    if (!validateField(field)) {
+                        isValid = false;
+                        if (!firstErrorField) firstErrorField = field;
+                    }
+                });
+                
+                if (!isValid) {
+                    if (firstErrorField) {
+                        firstErrorField.focus();
+                    }
+                    return;
+                }
+                const formData = {
+                    name: fields.name.value,
+                    email: fields.email.value,
+                    message: fields.message.value
+                };
+                console.log('Данные формы:', formData);
+                alert('Сообщение отправлено! Данные сохранены.\n\nИмя: ' + 
+                      formData.name + '\nEmail: ' + formData.email + 
+                      '\nСообщение: ' + formData.message);
+                form.reset();
+                
+                Object.values(fields).forEach(field => {
+                    clearFieldError(field);
+                });
+                
+                if (fields.name) {
+                    setTimeout(() => fields.name.focus(), 100);
+                }
+            });
+            
+            if (fields.name) {
+                setTimeout(() => fields.name.focus(), 100);
+            }
+            
+            const lazyImages = document.querySelectorAll('img[loading="lazy"]');
+            if ('IntersectionObserver' in window) {
+                const imageObserver = new IntersectionObserver((entries, observer) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const img = entry.target;
+                            img.classList.add('loaded');
+                            observer.unobserve(img);
+                        }
+                    });
+                }, {
+                    rootMargin: '50px 0px', 
+                    threshold: 0.1
+                });
+                
+                lazyImages.forEach(img => imageObserver.observe(img));
+            } else {
+                lazyImages.forEach(img => img.classList.add('loaded'));
+            }
+            
+            function checkWebPSupport() {
+                const canvas = document.createElement('canvas');
+                if (canvas.getContext && canvas.getContext('2d')) {
+                    return canvas.toDataURL('image/webp').indexOf('data:image/webp') === 0;
+                }
+                return false;
+            }
+            
+            console.log('WebP поддержка:', checkWebPSupport() ? 'Да' : 'Нет');
         });
-        
-        lazyImages.forEach(img => imageObserver.observe(img));
-    } else {
-        lazyImages.forEach(img => img.classList.add('loaded'));
-    }
-    
-    function checkWebPSupport() {
-        const canvas = document.createElement('canvas');
-        if (canvas.getContext && canvas.getContext('2d')) {
-            return canvas.toDataURL('image/webp').indexOf('data:image/webp') === 0;
-        }
-        return false;
-    }
-    
-    console.log('WebP поддержка:', checkWebPSupport() ? 'Да' : 'Нет');
-});
     </script>
 </body>
 </html>

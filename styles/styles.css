@@ -97,6 +97,7 @@ main {
     width: 100%;
 }
 
+
 :focus-visible { 
     outline: 3px solid #2563eb; 
     outline-offset: 2px; 
@@ -536,14 +537,14 @@ a, button, input, textarea {
 }
 
 .form-submit {
-    background-color: #FF6B00;
-    color: white;
-    border: none;
-    padding: 15px 30px;
-    border-radius: 5px;
+    background-color: #0056b3; 
+    color: #ffffff; 
+    border: 2px solid #0056b3;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
     font-size: 1.1rem;
     font-weight: 600;
-    cursor: pointer;
     transition: all 0.3s ease;
     margin-top: 10px;
     padding-block: max(.5rem, calc((44px - 1em)/2));
@@ -551,9 +552,19 @@ a, button, input, textarea {
 }
 
 .form-submit:hover {
-    background-color: #e05a00;
+    background-color: #004494; 
+    color: #ffffff;
+    border-color: #004494;
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(255, 107, 0, 0.3);
+}
+.form-submit:focus {
+    background-color: #004494; 
+    color: #ffffff;
+    border-color: #004494;
+}
+.form-submit:active {
+    background-color: #003375;
 }
 
 .contacts {
